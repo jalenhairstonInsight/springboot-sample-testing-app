@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 5vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.employeeDiv {
+  background-color: red;
+}
+
+.employeeInfoDiv {
+  display: flex;
+}
+
+.employeeInfoDiv div{
+  padding: 5px;
+}
+
+
+/* HEADER COMPONENT */
+
+#container {
+  width: 100%;
+  background-color: #61dafb;
+  display: flex;
+  justify-content: end;
+  height: 42px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+#container div {
+  flex-basis: 20%;
+}
+#container div p {
+  margin: 0 0 0 0;
+}
+
+#container #headerTitleDiv {
+  flex-basis: 40%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+}
+
+#container #headerTitleDiv * {
+  position: relative;
+}
+
+#container #headerTitleDiv p {
+  right: 51%;
+}
+
+#container #headerTitleDiv img {
+  right: 50%;
+  top: 1px;
+  z-index: -1;
+
+}
