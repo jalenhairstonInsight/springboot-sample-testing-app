@@ -21,31 +21,17 @@ function EmployeeList() {
     }
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    employees
-                </p>
-                {employees.map(employee =>
-                    <div className="employeeDiv" key={employee.id}>
-                        <div>Name: {employee.name}</div>
-                        <div className="employeeInfoDiv">
-                            <div>Email: {employee.email}</div>
-                            <div>Months Employed: {employee.monthsEmployed}</div>
-                        </div>
+        <>
+            {employees.map(employee =>
+                <div id="employeeDiv" key={employee.id}>
+                    <div id="employeeName">{employee.name}</div>
+                    <div id="employeeInfo">
+                        <div id="employeeEmail"><p>Email: {employee.email}</p></div>
+                        <div id="employeeMonthsEmployed"><p>Months Employed: {employee.monthsEmployed}</p></div>
                     </div>
-                )}
-
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+                </div>
+            )}
+        </>
     );
 }
 

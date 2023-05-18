@@ -1,7 +1,6 @@
 import React from "react";
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
-import App from "./App";
 import CreateEmployeePage from "./pages/CreateEmployeePage";
 import EmployeePage from "./pages/EmployeePage";
 import Home from "./pages/Home";
@@ -23,7 +22,9 @@ const router = createBrowserRouter([
 function Main() {
     return (
         <React.StrictMode>
-            <RouterProvider router={router} />
+            <div id="appBody">
+                <RouterProvider router={router} />
+            </div>
         </React.StrictMode>
     );
 

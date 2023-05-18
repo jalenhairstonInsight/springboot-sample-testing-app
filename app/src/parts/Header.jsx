@@ -1,20 +1,28 @@
 import logo from "../logo.svg";
 
 function Header() {
-    var viewEmployeeLink = "employees"
-    var newEmployeeLink = "new"
-    var home = "home"
+    let viewEmployeeLink = "employees"
+    let newEmployeeLink = "new"
+    let home = "home"
     return (
     <div id="container">
         <div id="headerTitleDiv">
             <img src={logo} className="App-logo" alt="logo" />
-            <p><a href={home}>Employee Website </a></p>
+            <div className="headerButton"
+                onClick={() => window.location.href = home}
+            >
+                <p id="employeeWebsite">Employee Website</p>
+            </div>
         </div>
-        <div id="employees">
-            <p><a href={viewEmployeeLink}>View Employees </a> </p>
+        <div className="headerButton" id="employees"
+             onClick={() => window.location.href = viewEmployeeLink}
+        >
+            <p>View Employees</p>
         </div>
-        <div id="newEmployee">
-            <p><a href={newEmployeeLink}>New Employee </a></p>
+        <div className="headerButton" id="newEmployee"
+             onClick={() => window.location.href = newEmployeeLink}
+        >
+            <p>New Employee</p>
         </div>
     </div>
     )

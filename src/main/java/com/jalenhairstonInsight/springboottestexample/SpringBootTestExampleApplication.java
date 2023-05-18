@@ -26,12 +26,15 @@ public class SpringBootTestExampleApplication {
 	}
 
 	@PostMapping
-	public void createEmployee(@RequestBody EmployeeRequest request) {
-		Employee employee = new Employee();
-		employee.setName(request.getName());
-		employee.setEmail(request.getEmail());
-		employee.setMonthsEmployed(request.getMonthsEmployed());
-		employeeRepository.save(employee);
+	public void createEmployees(@RequestBody EmployeeRequest[] requests) {
+		for (EmployeeRequest request: requests) {
+			Employee employee = new Employee();
+			employee.setName(request.getName());
+			employee.setEmail(request.getEmail());
+			employee.setMonthsEmployed(request.getMonthsEmployed());
+			employeeRepository.save(employee);
+		}
+
 	}
 
 	@GetMapping

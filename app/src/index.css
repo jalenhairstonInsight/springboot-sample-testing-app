@@ -1,13 +1,160 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.App {
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+#appBody {
+  background-color: #181a1b;
+  min-height: 961px;
+}
+
+
+.App-logo {
+  height: 5vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* EMPLOYEE PAGE */
+
+#employeeListTitle {
+  width: 100%;
+  height: 110px;
+  font-size: 2.8em;
+  text-align: center;
+  vertical-align: baseline;
+  color: white;
+}
+
+#employeeListTitle p {
+  position: relative;
+  top: 30px;
+}
+
+#employeeDiv {
+  background-color: #057498;
+  width: 100%;
+  height: 130px;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #20242b;
+  border-width: 3px;
+  margin-bottom: 8px;
+
+}
+
+#employeeName {
+  height: 55%;
+  font-size: 3em;
+  padding-left: 5px;
+}
+
+#employeeInfo {
+  display: flex;
+  justify-content: center;
+  font-size: 1.8em;
+  color: black;
+}
+
+#employeeInfo div{
+  padding: 5px;
+}
+
+#employeeInfo div{
+  position: relative;
+  top: 7px;
+}
+
+#employeeEmail {
+  flex-basis: 60%;
+}
+
+
+
+/* HEADER COMPONENT */
+
+#container {
+  width: 100%;
+  background-color: rgba(5,116,152,255);
+  display: flex;
+  justify-content: left;
+  height: 90px;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+#container div {
+  flex-basis: 18%;
+}
+#container div p {
+  margin: 0 0 0 0;
+}
+
+#container #headerTitleDiv {
+  flex-basis: 90%;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+#container #headerTitleDiv * {
+  position: relative;
+}
+
+#container #headerTitleDiv div {
+  min-width: 177px;
+  height: 100%;
+  position: relative;
+  right: 15px;
+}
+
+#container #headerTitleDiv img {
+  top: 1px;
+  z-index: -1;
+}
+
+#container .headerButton {
+  height: 100%;
+}
+
+#container .headerButton p {
+  position: relative;
+  top: 35%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#container #employeeWebsite {
+  text-align: center;
+}
+
+
+#container .headerButton:hover {
+  background-color: #0a5c78;
+  cursor: pointer;
+  transition: all 1s ease;
 }
