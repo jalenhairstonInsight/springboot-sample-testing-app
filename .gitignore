@@ -29,7 +29,7 @@ node_modules
 .idea
 target
 HELP.md
-docker-compose.yml
-application.yml
+
+
 notes.md
 .DS_Store
