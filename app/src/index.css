@@ -38,7 +38,7 @@
 
 /* EMPLOYEE PAGE */
 
-#employeeListTitle {
+#pageTitle {
   width: 100%;
   height: 110px;
   font-size: 2.8em;
@@ -47,7 +47,7 @@
   color: white;
 }
 
-#employeeListTitle p {
+#pageTitle p {
   position: relative;
   top: 30px;
 }
@@ -90,7 +90,38 @@
   flex-basis: 60%;
 }
 
+/* NEW EMPLOYEE PAGE */
 
+#employeeForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#employeeForm div{
+  width: 400px;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+#employeeForm .employeeFormField{
+  position: relative;
+  right: 25px;
+}
+
+#employeeForm #submitForm {
+  margin-top: 8px;
+}
+
+/*#employeeForm div *{*/
+/*  width: 400px;*/
+/*}*/
+
+#employeeForm label{
+  color: white;
+  margin-right: 8px;
+  width: 12%;
+}
 
 /* HEADER COMPONENT */
 

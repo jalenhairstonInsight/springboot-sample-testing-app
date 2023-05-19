@@ -1,11 +1,11 @@
 import Header from "../parts/Header"
-import EmployeeList from "../parts/EmployeeList";
+import EmployeeForm from "../parts/EmployeeForm";
 function CreateEmployeePage() {
     return (
         <>
             <Header />
-            <p>create employee</p>
-            <EmployeeList />
+            <div id="pageTitle"><p>New Employee</p></div>
+            <EmployeeForm />
         </>
     )
 }
