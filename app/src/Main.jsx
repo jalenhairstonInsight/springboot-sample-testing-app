@@ -4,7 +4,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import CreateEmployeePage from "./pages/CreateEmployeePage";
 import EmployeePage from "./pages/EmployeePage";
 import Home from "./pages/Home";
-
+import UpdateEmployeePage from "./pages/UpdateEmployeePage";
 const router = createBrowserRouter([
     {
         path: "/home",
@@ -18,6 +18,11 @@ const router = createBrowserRouter([
         path: "/new",
         element: <CreateEmployeePage />,
     },
+    {
+        path: "/:employeeId",
+        element: <UpdateEmployeePage />,
+    },
+
 ])
 function Main() {
     return (

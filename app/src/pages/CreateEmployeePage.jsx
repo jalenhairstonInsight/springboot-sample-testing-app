@@ -4,7 +4,7 @@ function CreateEmployeePage() {
     return (
         <>
             <Header />
-            <div id="pageTitle"><p>New Employee</p></div>
+            <div className="pageTitle"><p>New Employee</p></div>
             <EmployeeForm />
         </>
     )

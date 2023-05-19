@@ -4,6 +4,7 @@ package com.jalenhairstonInsight.springboottestexample;
 import com.jalenhairstonInsight.springboottestexample.employee.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,8 +40,11 @@ public class SpringBootTestExampleApplication {
 
 	@GetMapping
 	public List<Employee> getEmployees() {
-		return employeeRepository.findAll();
+		return employeeRepository.findAll(Sort.by("id"));
 	}
+
+	@GetMapping("/{employeeId}")
+	public Employee getEmployeeById(@PathVariable("employeeId")Integer ID) { return employeeRepository.findById(ID).get(); }
 
 	@PutMapping("/{employeeId}")
 	public void updateEmployee(@PathVariable("employeeId")Integer ID, @RequestBody EmployeeRequest request) {

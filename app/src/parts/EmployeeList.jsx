@@ -22,8 +22,12 @@ function EmployeeList() {
 
     return (
         <>
+            <div id="employeeList">
+            {employees.length === 0 && <p id="emptyListMessage">There are no employees to display currently.</p>}
             {employees.map(employee =>
-                <div id="employeeDiv" key={employee.id}>
+                <div id="employeeDiv" key={employee.id}
+                     onClick={() => window.location.href = "employees-" + employee.id}
+                >
                     <div id="employeeName">{employee.name}</div>
                     <div id="employeeInfo">
                         <div id="employeeEmail"><p>Email: {employee.email}</p></div>
@@ -31,6 +35,7 @@ function EmployeeList() {
                     </div>
                 </div>
             )}
+            </div>
         </>
     );
 }
