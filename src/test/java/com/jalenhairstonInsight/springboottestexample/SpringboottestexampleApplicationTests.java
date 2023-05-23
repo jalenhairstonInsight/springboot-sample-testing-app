@@ -1,4 +1,4 @@
-package com.athomasinsight.springboottestexample;
+package com.jalenhairstonInsight.springboottestexample;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -66,24 +66,82 @@
 }
 
 
+#employeeListContainer {
+  min-width: 50%;
+  max-width: 755px;
+  margin: auto;
+  color: white;
+}
+
+#employeeListOptions {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+#employeeListOptions div {
+  display: flex;
+  align-items: center
+}
+
+#employeeListOptions #numEntriesPerPage {
+  width: 45px;
+}
+
+#employeeListOptions #numberOfEntries p {
+  margin: auto;
+  padding: 0px 5px 0px 5px;
+}
+
+
+#employeeListOptions #pageNumberDisplay {
+  margin: auto;
+  padding-right: 5px;
+}
+
+#employeeListOptions #pageButtons button {
+  width: 38px;
+  height: 38px;
+  font-size: 1.4em;
+  background-color: inherit;
+  border: none;
+  color: white;
+}
+
+#employeeListOptions #pageButtons button:disabled {
+  color: gray;
+}
+
+#employeeListOptions #pageButtons #employeePreviousCaret {
+  transform: rotate(-90deg);
+}
+
+#employeeListOptions #pageButtons #employeeNextCaret {
+  transform: rotate(90deg);
+}
+
+#employeeListOptions #pageButtons p {
+  margin: auto;
+}
+
+
 #employeeList {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: white;
+
 }
 
 
 #employeeDiv {
   background-color: #057498;
-  width: 45%;
+  min-width: 100%;
   height: 130px;
   border-style: solid;
   border-radius: 10px;
   border-color: #20242b;
   border-width: 3px;
   margin-bottom: 8px;
-  /*color: white;*/
 }
 
 #employeeDiv:hover {
@@ -95,7 +153,7 @@
 #employeeName {
   height: 55%;
   font-size: 2.75em;
-  padding: 5px 0px 0px 20px;
+  padding: 5px 0px 0px 14px;
 }
 
 #employeeInfo {
@@ -105,9 +163,6 @@
   color: black;
 }
 
-#employeeInfo div{
-  padding: 5px;
-}
 
 #employeeInfo div{
   position: relative;
@@ -117,6 +172,9 @@
 #employeeEmail {
   flex-basis: 60%;
 }
+
+
+
 
 /* NEW EMPLOYEE PAGE */
 
@@ -164,6 +222,11 @@
 #employeeForm #deleteButton button {
   color: red;
 }
+
+#employeeForm #redirectMessage {
+  text-align: center;
+}
+
 
   /* HEADER COMPONENT */
 

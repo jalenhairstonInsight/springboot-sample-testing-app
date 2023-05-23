@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
 
 function EmployeeForm(props) {
-const [employee, setEmployee] = useState([])
-const [loading, setLoading] = useState(false)
+    const [employee, setEmployee] = useState([])
+    const [loading, setLoading] = useState(false)
+
+
     useEffect(() => {
         if (props.employeeId) {
             setLoading(true)
@@ -93,6 +95,20 @@ function submitForm(employeeId) {
 
 function deleteEmployee(employeeId) {
     let formDiv = document.getElementById('employeeForm')
+    let redirectTimerSeconds = 3
     fetch('api/v1/employees/' + employeeId, { method: 'DELETE' })
-        .then(() => formDiv.innerHTML = 'Delete successful');
+        .then(() => {
+            let timerCountdown = setInterval(() => {
+                updateRedirectTimer(formDiv, redirectTimerSeconds)
+                redirectTimerSeconds -= 1
+            }, 1000)
+            setTimeout(() => {
+                clearInterval(timerCountdown)
+                window.location.href = "employees"
+            }, 3000)
+        });
+}
+
+function updateRedirectTimer(container, timerSeconds) {
+    container.innerHTML = "<p id='redirectMessage'>Delete Successful <br> Returning to employee list in " + timerSeconds + " seconds...<p>"
 }
