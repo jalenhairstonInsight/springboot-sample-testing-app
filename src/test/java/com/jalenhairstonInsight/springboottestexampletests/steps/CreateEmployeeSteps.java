@@ -1,4 +1,4 @@
-package com.jalenhairstonInsight.springboottestexample.steps;
+package com.jalenhairstonInsight.springboottestexampletests.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

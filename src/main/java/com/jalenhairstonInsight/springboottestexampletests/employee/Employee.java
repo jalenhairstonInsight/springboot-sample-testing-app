@@ -1,4 +1,4 @@
-package com.jalenhairstonInsight.springboottestexample.employee;
+package com.jalenhairstonInsight.springboottestexampletests.employee;
 
 import jakarta.persistence.*;
 import java.util.Objects;
