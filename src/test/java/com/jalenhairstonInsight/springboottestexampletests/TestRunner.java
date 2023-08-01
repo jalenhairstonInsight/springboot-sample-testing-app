@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"html:target/cucumber-report.html"},
         features = "src/test/resources/features",
-//        glue = "com.jalenhairstonInsight.springboottestexampletests.steps",
-        stepNotifications = true,
-//        dryRun = true,
+        glue = "com.jalenhairstonInsight.springboottestexampletests.steps",
+//        stepNotifications = true,
+        dryRun = false,
         tags = "@createEmployee"
 )
 

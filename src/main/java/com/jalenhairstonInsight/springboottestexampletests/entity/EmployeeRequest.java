@@ -1,4 +1,4 @@
-package com.jalenhairstonInsight.springboottestexampletests.employee;
+package com.jalenhairstonInsight.springboottestexampletests.entity;
 
 import java.util.Objects;
 
