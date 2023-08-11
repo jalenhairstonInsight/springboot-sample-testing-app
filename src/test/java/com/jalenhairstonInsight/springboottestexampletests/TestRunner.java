@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         glue = "com.jalenhairstonInsight.springboottestexampletests.steps",
 //        stepNotifications = true,
         dryRun = false,
-        tags = "@createEmployee"
+        tags = "@createEmployee or @updateEmployee or @deleteEmployee"
 )
 
 public class TestRunner {

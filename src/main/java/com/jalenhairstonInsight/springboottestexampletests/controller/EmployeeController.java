@@ -17,6 +17,7 @@ public class EmployeeController {
     @Autowired
     public EmployeeService employeeService;
 
+
     @PostMapping
     public void createEmployees(@RequestBody EmployeeRequest[] requests) {
         for (EmployeeRequest request: requests) {
@@ -49,4 +50,7 @@ public class EmployeeController {
     public void deleteEmployee(@PathVariable("employeeId")Integer ID) {
         employeeService.deleteById(ID);
     }
+
+    @DeleteMapping
+    public void deleteEmployees() { employeeService.deleteAll(); }
 }
