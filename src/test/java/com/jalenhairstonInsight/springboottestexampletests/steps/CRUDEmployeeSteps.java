@@ -2,6 +2,7 @@ package com.jalenhairstonInsight.springboottestexampletests.steps;
 
 import com.jalenhairstonInsight.springboottestexampletests.entity.Employee;
 import com.jalenhairstonInsight.springboottestexampletests.entity.EmployeeRequest;
+import com.jalenhairstonInsight.springboottestexampletests.entity.Request;
 import com.jalenhairstonInsight.springboottestexampletests.utils.APIConnectionInfo;
 import com.jalenhairstonInsight.springboottestexampletests.utils.EmployeeRequestData;
 import com.jalenhairstonInsight.springboottestexampletests.utils.EmployeeUtils;
@@ -26,7 +27,7 @@ public class CRUDEmployeeSteps {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private ResponseEntity<EmployeeRequest> response;
+    private ResponseEntity<Request> response;
     private ResponseEntity<Employee[]> result;
     private ResponseEntity<Void> updateResponse;
     private ResponseEntity<Void> deleteResponse;
@@ -39,17 +40,17 @@ public class CRUDEmployeeSteps {
         System.out.println(deleteResponse.getStatusCode().value());
     }
 
-    @Given("I am an authorized user")
-    public void i_am_an_authorized_user() {
+    @Given("Connection to DB is operational")
+    public void connection_to_db_is_operational() {
         // Write code here that turns the phrase above into concrete actions
     }
 
     @When("I request to create Employee {int}")
     public void i_request_to_create_employee(Integer n) {
         int index = n - 1;
-        EmployeeRequest request = employeeRequestData.getCreateEmployeeRequest(index);
-        EmployeeRequest[] requestArray = RestTemplateUtils.wrapRequest(request);
-        response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<EmployeeRequest[]>(requestArray), EmployeeRequest.class);
+        Request request = employeeRequestData.getCreateEmployeeRequest(index);
+        Request[] requestArray = RestTemplateUtils.wrapRequest(request);
+        response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<Request[]>(requestArray), Request.class);
     }
 
     @Then("The Employee is created")
@@ -78,16 +79,29 @@ public class CRUDEmployeeSteps {
         Assert.assertEquals(actual.getId() - previous.getId(), 1);
     }
 
+    @When("I request to incorrectly create Employee {int}")
+    public void i_request_to_incorrectly_create_employee(Integer n) {
+        int index = n - 1;
+        Request request = employeeRequestData.getIncorrectEmployeeRequest(index);
+        Request[] requestArray = RestTemplateUtils.wrapRequest(request);
+        response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<Request[]>(requestArray), Request.class);
+    }
+
+    @Then("The employee is not created")
+    public void the_employee_is_not_created()  {
+        Assert.assertEquals(400, response.getStatusCode().value());
+    }
+
     @When("I request to update Employee {int}")
     public void i_request_to_update_employee(Integer n) {
         int index = n - 1;
-        EmployeeRequest request = employeeRequestData.getUpdateEmployeeRequest(index);
+        Request request = employeeRequestData.getUpdateEmployeeRequest(index);
         result = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Employee[].class);
         try {
             Employee employee = RestTemplateUtils.getLastEntry(result);
-            updateResponse = restTemplate.exchange(url + "/" + employee.getId(), HttpMethod.PUT, new HttpEntity<EmployeeRequest>(request), Void.class);
+            updateResponse = restTemplate.exchange(url + "/" + employee.getId(), HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
         } catch(Exception e) {
-            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<EmployeeRequest>(request), Void.class);
+            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
         }
 
     }
@@ -110,9 +124,28 @@ public class CRUDEmployeeSteps {
 
     }
 
-    @Then("The Employee is not updated")
-    public void the_employee_is_not_updated() {
+    @Then("The server errors and Employee is not updated")
+    public void the_server_errors_and_employee_is_not_updated() {
         Assert.assertEquals(500, updateResponse.getStatusCode().value());
+    }
+
+    @When("I request to incorrectly update Employee {int}")
+    public void i_request_to_incorrectly_update_employee(Integer n) {
+        int index = n - 1;
+        Request request = employeeRequestData.getIncorrectEmployeeRequest(index);
+        result = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Employee[].class);
+        try {
+            Employee employee = RestTemplateUtils.getLastEntry(result);
+            updateResponse = restTemplate.exchange(url + "/" + employee.getId(), HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
+        } catch(Exception e) {
+            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
+        }
+    }
+
+    @Then("The request is bad and Employee is not updated")
+    public void the_request_is_bad_and_employee_is_not_updated() {
+        Assert.assertEquals(400, updateResponse.getStatusCode().value());
+
     }
 
     @When("I request to delete Employee {int}")
@@ -132,8 +165,8 @@ public class CRUDEmployeeSteps {
         Assert.assertEquals(200, deleteResponse.getStatusCode().value());
     }
 
-    @Then("The Employee is not deleted")
-    public void the_employee_is_not_deleted() {
+    @Then("The server errors and Employee is not deleted")
+    public void the_server_errors_and_employee_is_not_deleted() {
         Assert.assertEquals(500, deleteResponse.getStatusCode().value());
     }
 }

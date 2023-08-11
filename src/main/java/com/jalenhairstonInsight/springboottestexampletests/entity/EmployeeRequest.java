@@ -2,7 +2,7 @@ package com.jalenhairstonInsight.springboottestexampletests.entity;
 
 import java.util.Objects;
 
-public class EmployeeRequest {
+public class EmployeeRequest extends Request {
     private final String name;
     private final String email;
     private final Integer monthsEmployed;
