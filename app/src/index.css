@@ -185,34 +185,57 @@
   color: white;
 }
 
-#employeeForm div{
-  width: 400px;
-  text-align: center;
-  margin-bottom: 8px;
-}
+
 
 #employeeForm .employeeFormField{
   position: relative;
   right: 25px;
   display: flex;
-  width: 500px;
+  text-align: center;
+  width: 400px;
+  margin-bottom: 8px;
+  justify-content: center;
+
 }
 
-#employeeForm .employeeFormField input {
+#emailType {
+  justify-content: center;
+}
+
+
+
+.emailTypeOptionDiv {
+
+}
+
+#employeeForm .employeeFormField .textBox {
   width: 50%;
+}
+
+.radioButton {
+  width: 50px;
 }
 
 #employeeForm #submitForm {
   margin-top: 15px;
 }
 
+#employeeForm .selectLabel{
+  color: white;
+  margin-right: 8px;
+}
 
-#employeeForm label{
+
+#employeeForm .fieldLabel{
   color: white;
   margin-right: 8px;
   width: 40%;
   display: flex;
   justify-content: right;
+}
+
+#confirmSubmit {
+  margin-right: 10px;
 }
 
 #employeeForm #deleteButton {
@@ -226,6 +249,7 @@
 #employeeForm #redirectMessage {
   text-align: center;
 }
+
 
 
   /* HEADER COMPONENT */

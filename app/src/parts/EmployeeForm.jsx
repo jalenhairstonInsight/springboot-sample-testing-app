@@ -26,34 +26,50 @@ function EmployeeForm(props) {
         <>
             <div id="employeeForm">
                 <div className="employeeFormField">
-                    <label htmlFor="name">Name:</label>
+                    <label className="fieldLabel" htmlFor="name">Name:</label>
                     {props.employeeId ?
-                        <input id="name" name="name" type="text" defaultValue={employee.name}></input> :
-                        <input id="name" name="name" type="text"></input>
+                        <input className="textBox" id="name" name="name" type="text" defaultValue={employee.name}></input> :
+                        <input className="textBox" id="name" name="name" type="text"></input>
                     }
 
                 </div>
                 <div className="employeeFormField">
-                    <label htmlFor="email">Email:</label>
+                    <label className="fieldLabel" htmlFor="email">Email:</label>
                     {props.employeeId ?
-                        <input id="email" name="email" type="text" defaultValue={employee.email}></input> :
-                        <input id="email" name="email" type="text"></input>
+                        <input className="textBox" id="email" name="email" type="text" defaultValue={employee.email}></input> :
+                        <input className="textBox" id="email" name="email" type="text"></input>
+                    }
+
+                </div>
+                <div className="employeeFormField" id="emailType">
+                    <div className="emailTypeOptionDiv">
+                    <input className="radioButton" id="workEmailYes" name="workEmail" type="radio"></input>
+                    <label  className="selectLabel" htmlFor="workEmailYes">Work</label>
+                    </div>
+                    <div className="emailTypeOptionDiv">
+                    <input className="radioButton" id="workEmailNo" name="workEmail" type="radio"></input>
+                    <label  className="selectLabel" htmlFor="workEmailYes">Personal</label>
+                    </div>
+                </div>
+
+                <div className="employeeFormField">
+                    <label className="fieldLabel" htmlFor="monthsEmployed">Months Employed:</label>
+                    {props.employeeId ?
+                        <input className="textBox" id="monthsEmployed" name="monthsEmployed" type="number" defaultValue={employee.monthsEmployed}></input> :
+                        <input className="textBox" id="monthsEmployed" name="monthsEmployed" type="number"></input>
                     }
                 </div>
                 <div className="employeeFormField">
-                    <label htmlFor="monthsEmployed">Months Employed:</label>
-                    {props.employeeId ?
-                        <input id="monthsEmployed" name="monthsEmployed" type="text" defaultValue={employee.monthsEmployed}></input> :
-                        <input id="monthsEmployed" name="monthsEmployed" type="text"></input>
-                    }
+                    <input type="checkbox" id="confirmSubmit" name="confirm" value="Bike"></input>
+                        <label htmlFor="confirm">Remember Employee in System</label>
                 </div>
-                <div id="submitForm">
+                <div className="employeeFormField" id="submitForm">
                     <button
                         onClick={() => submitForm(props.employeeId)}
                     >Submit</button>
                 </div>
                 {props.employeeId &&
-                    <div id="deleteButton">
+                    <div className="employeeFormField" id="deleteButton">
                         <button
                             onClick={() => deleteEmployee(props.employeeId)}
                         >Delete Employee</button>
