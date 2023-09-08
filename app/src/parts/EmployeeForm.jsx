@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 function EmployeeForm(props) {
     const [employee, setEmployee] = useState([])
     const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(false)
 
 
     useEffect(() => {
@@ -14,11 +15,12 @@ function EmployeeForm(props) {
                 .then((data) => {
                     setEmployee(data)
                     setLoading(false)
-                    addFormEventListeners()
+                    addFormEventListeners(props)
+                    setDisabled(true)
                 });
         } else {
-            addFormEventListeners()
-            document.getElementById("submitButton").disabled = true
+            addFormEventListeners(props)
+            setDisabled(true)
         }
 
     },[])
@@ -71,6 +73,7 @@ function EmployeeForm(props) {
                 </div>
                 <div className="employeeFormField" id="submitForm">
                     <button
+                        disabled={disabled}
                         id="submitButton"
                         onClick={() => submitForm(props.employeeId)}
                     >Submit</button>
@@ -90,11 +93,11 @@ function EmployeeForm(props) {
 
 export default EmployeeForm
 
-function addFormEventListeners() {
+function addFormEventListeners(props) {
     let updateSubmitElements = document.getElementsByClassName("updateSubmit")
     for (let element of updateSubmitElements) {
         element.addEventListener("input", (event) => {
-            updateSubmitButtonStatus()
+            updateSubmitButtonStatus(props)
         })
     }
     // document.getElementById("submitButton").addEventListener("load", (event) => {
@@ -145,7 +148,7 @@ function deleteEmployee(employeeId) {
         });
 }
 
-function updateSubmitButtonStatus() {
+function updateSubmitButtonStatus(props) {
     let name = document.getElementById('name').value
     let email = document.getElementById('email').value
     let emailTypeSelected = document.getElementById("isWorkEmail").checked || document.getElementById("isPersonalEmail").checked
@@ -158,14 +161,13 @@ function updateSubmitButtonStatus() {
         monthsEmployed: monthsEmployed > 0,
         confirmSubmit: confirmSubmit
     }
-    console.log(validations)
     if (validations.name && validations.email && validations.emailTypeSelected && validations.monthsEmployed && validations.confirmSubmit) {
-        console.log("man")
         document.getElementById("submitButton").disabled = false
+        document.getElementById("submitButton").addEventListener("click", (event) => {
+            submitForm(props.employeeId)
+        })
     } else {
-        console.log(document.getElementById("submitButton"))
         document.getElementById("submitButton").disabled = true
-        console.log(document.getElementById("submitButton").disabled)
     }
 }
 
