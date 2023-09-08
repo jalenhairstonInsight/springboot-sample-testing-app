@@ -6,8 +6,8 @@ Feature: Create Employee Form
     And I fill in the Email field correctly
     And I select the Email Type field correctly
     And I fill in the Months Employed field correctly
+    And I confirm I want to submit the form
     Then I can submit the form
-    And The form creates an Employee
 
   Scenario:  Name field filled incorrectly
     Given I am on the Create Employee Form page
@@ -15,6 +15,7 @@ Feature: Create Employee Form
     And I fill in the Email field correctly
     And I select the Email Type field correctly
     And I fill in the Months Employed field correctly
+    And I confirm I want to submit the form
     Then I cannot submit the form
 
   Scenario:  Email field filled incorrectly
@@ -23,6 +24,7 @@ Feature: Create Employee Form
     And I fill in the Email field incorrectly
     And I select the Email Type field correctly
     And I fill in the Months Employed field correctly
+    And I confirm I want to submit the form
     Then I cannot submit the form
 
   Scenario:  Email Type field selected incorrectly
@@ -31,6 +33,7 @@ Feature: Create Employee Form
     And I fill in the Email field correctly
     And I select the Email Type field incorrectly
     And I fill in the Months Employed field correctly
+    And I confirm I want to submit the form
     Then I cannot submit the form
 
   Scenario:  Months Employed field filled incorrectly
@@ -39,4 +42,5 @@ Feature: Create Employee Form
     And I fill in the Email field correctly
     And I select the Email Type field correctly
     And I fill in the Months Employed field incorrectly
-    Then I can submit the form
+    And I confirm I want to submit the form
+    Then I cannot submit the form
