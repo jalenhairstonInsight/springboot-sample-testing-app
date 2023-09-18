@@ -30,7 +30,7 @@ function EmployeeList() {
                 <div id="employeeListOptions">
                     <div id="numberOfEntries">
                         <p>Showing</p>
-                        <input id="numEntriesPerPage" type="number" min="0" max="20" defaultValue={numEmployeesPerPage}
+                        <input id="numEntriesPerPage" type="number" min="0" max="20" value={numEmployeesPerPage}
                                onChange={() => {
                                    setNumEmployeesPerPage(parseInt(document.getElementById("numEntriesPerPage").value))
                                }}
@@ -55,8 +55,8 @@ function EmployeeList() {
                     </div>
                 </div>
                 <div id="employeeList">
-                    {employees.slice(employeeStartIndex, employeeStartIndex + numEmployeesPerPage).map(employee =>
-                        <div id="employeeDiv" key={employee.id}
+                    {employees.slice(employeeStartIndex, employeeStartIndex + numEmployeesPerPage).map((employee, index, slicedArray) =>
+                        <div className="employeeDiv" id={"employeeDiv" + (slicedArray.length - (index + 1))} key={employee.id}
                              onClick={() => window.location.href = "employees-" + employee.id}
                         >
                             <div id="employeeName">{employee.name}</div>

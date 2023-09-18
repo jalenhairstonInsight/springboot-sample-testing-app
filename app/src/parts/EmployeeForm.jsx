@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 
+var submitEventAdded = false
+
 function EmployeeForm(props) {
     const [employee, setEmployee] = useState([])
     const [loading, setLoading] = useState(false)
@@ -9,18 +11,15 @@ function EmployeeForm(props) {
     useEffect(() => {
         if (props.employeeId) {
             setLoading(true)
-            console.log(props.employeeId)
             fetch('api/v1/employees/' + props.employeeId)
                 .then(response => response.json())
                 .then((data) => {
                     setEmployee(data)
                     setLoading(false)
                     addFormEventListeners(props)
-                    setDisabled(true)
                 });
         } else {
             addFormEventListeners(props)
-            setDisabled(true)
         }
 
     },[])
@@ -73,14 +72,14 @@ function EmployeeForm(props) {
                 </div>
                 <div className="employeeFormField" id="submitForm">
                     <button
-                        disabled={disabled}
+                        disabled
                         id="submitButton"
-                        onClick={() => submitForm(props.employeeId)}
                     >Submit</button>
                 </div>
                 {props.employeeId &&
-                    <div className="employeeFormField" id="deleteButton">
+                    <div className="employeeFormField" id="deleteButtonContainer">
                         <button
+                            id="deleteButton"
                             onClick={() => deleteEmployee(props.employeeId)}
                         >Delete Employee</button>
                     </div>
@@ -107,8 +106,6 @@ function addFormEventListeners(props) {
 
 
 function submitForm(employeeId) {
-    console.log("hi")
-
     let requestBody = [{
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
@@ -126,7 +123,6 @@ function submitForm(employeeId) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(requestBody)
     };
-    // console.log(endpoint, requestOptions)
     fetch(endpoint, requestOptions)
         .then(response => {window.location.href = "employees"})
 
@@ -163,9 +159,12 @@ function updateSubmitButtonStatus(props) {
     }
     if (validations.name && validations.email && validations.emailTypeSelected && validations.monthsEmployed && validations.confirmSubmit) {
         document.getElementById("submitButton").disabled = false
-        document.getElementById("submitButton").addEventListener("click", (event) => {
-            submitForm(props.employeeId)
-        })
+        if (!submitEventAdded) {
+            document.getElementById("submitButton").addEventListener("click", (event) => {
+                submitForm(props.employeeId)
+            })
+            submitEventAdded = true
+        }
     } else {
         document.getElementById("submitButton").disabled = true
     }

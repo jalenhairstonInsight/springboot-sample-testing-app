@@ -42,7 +42,7 @@ public class CRUDEmployeeSteps {
 
     @Given("Connection to DB is operational")
     public void connection_to_db_is_operational() {
-        // Write code here that turns the phrase above into concrete actions
+        // Write code here that empty GET request
     }
 
     @When("I request to create Employee {int}")
@@ -65,7 +65,6 @@ public class CRUDEmployeeSteps {
                 expectedRequest.getName(),
                 expectedRequest.getEmail(),
                 expectedRequest.getMonthsEmployed());
-//        result = restTemplate.getForEntity(url, Employee[].class);
         result = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Employee[].class);
         Employee actual = RestTemplateUtils.getLastEntry(result);
         EmployeeUtils.assertEquals(expected, actual);
@@ -97,12 +96,14 @@ public class CRUDEmployeeSteps {
         int index = n - 1;
         Request request = employeeRequestData.getUpdateEmployeeRequest(index);
         result = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Employee[].class);
-        try {
+//        try {
             Employee employee = RestTemplateUtils.getLastEntry(result);
             updateResponse = restTemplate.exchange(url + "/" + employee.getId(), HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
-        } catch(Exception e) {
-            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
-        }
+//        }
+
+//        catch(Exception e) {
+//            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
+//        }
 
     }
 
