@@ -3,7 +3,7 @@ Feature: Employee List
     Given I have created <created> Employees
     And I am on the Employee List page
     When I select to show <shown> entries
-    Then The Employee List shows <shown> entries
+    Then The Employee List shows <shown> out of <created> entries
     And The next page button is '<status>'
 
     Examples:

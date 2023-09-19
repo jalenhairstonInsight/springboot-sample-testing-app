@@ -1,6 +1,10 @@
 import {Given, When, Then, Before} from "cypress-cucumber-preprocessor/steps";
 import employeeUtils from "../../util/employeeUtils";
 
+Before(() => {
+    employeeUtils.deleteEmployeesAtOnce();
+})
+
 Given("I am on the Employee List page", () => {
     employeeUtils.visitEmployeeListPage()
 })
@@ -11,7 +15,10 @@ When("I select to show {int} entries", (numSelectedToShow) => {
 
 
 
-Then("The Employee List shows {int} entries", (numToShow) => {
+Then("The Employee List shows {int} out of {int} entries", (numToShow, numCreated) => {
+    if (numToShow > numCreated) {
+        numToShow = numCreated
+    }
     employeeUtils.assertNumEntriesShown(numToShow)
 })
 

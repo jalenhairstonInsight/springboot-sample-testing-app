@@ -134,4 +134,8 @@ export default class employeeUtils {
     static assertEmptyListMessageIsShown() {
         cy.get("#emptyListMessage").should("be.visible")
     }
+
+    static deleteEmployeesAtOnce() {
+        cy.request("DELETE", "http://localhost:3002/api/v1/employees")
+    }
 }

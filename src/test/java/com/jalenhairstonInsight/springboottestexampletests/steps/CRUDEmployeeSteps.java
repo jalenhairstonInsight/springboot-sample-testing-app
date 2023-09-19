@@ -96,15 +96,13 @@ public class CRUDEmployeeSteps {
         int index = n - 1;
         Request request = employeeRequestData.getUpdateEmployeeRequest(index);
         result = restTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Employee[].class);
-//        try {
+        Employee[] resultBody = result.getBody();
+        if (resultBody.length > 0) {
             Employee employee = RestTemplateUtils.getLastEntry(result);
             updateResponse = restTemplate.exchange(url + "/" + employee.getId(), HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
-//        }
-
-//        catch(Exception e) {
-//            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
-//        }
-
+            return;
+        }
+            updateResponse = restTemplate.exchange(url + "/1", HttpMethod.PUT, new HttpEntity<Request>(request), Void.class);
     }
 
     @Then("The Employee is updated")
