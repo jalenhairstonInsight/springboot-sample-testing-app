@@ -116,7 +116,6 @@ export default class employeeUtils {
         let numEmployees
         cy.get('#numEntriesPerPage').invoke('val', '').clear({force: true}).type(this.employeeInfo.MAX_EMPLOYEES, {force: true}).blur()
         cy.get('.employeeDiv').then(($elementList) => {
-            console.log($elementList.get().length)
             numEmployees = $elementList.get().length
             for (let i = 0; i < numEmployees; i++) {
                 this.visitUpdateEmployeePage()
@@ -125,7 +124,6 @@ export default class employeeUtils {
             }
 
         })
-        console.log(numEmployees)
         return numEmployees
 
 
