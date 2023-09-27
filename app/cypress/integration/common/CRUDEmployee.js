@@ -83,10 +83,6 @@ Then("The months employed field is pre-filled with Employee 1's months employed"
     employeeUtils.checkMonthsEmployed()
 })
 
-Then("I cannot submit the form", () => {
-    employeeUtils.assertSubmitDisabled()
-})
-
 Given("I am on the Update Employee 1 Form page", () => {
     employeeUtils.visitUpdateEmployeePage()
 })

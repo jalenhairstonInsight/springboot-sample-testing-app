@@ -27,7 +27,7 @@ function EmployeeList() {
             <div id="employeeListContainer">
                 {employees.length === 0 && <p id="emptyListMessage">There are no employees to display currently.</p>}
 
-                <div id="employeeListOptions">
+                {employees.length > 0 && <div id="employeeListOptions">
                     <div id="numberOfEntries">
                         <p>Showing</p>
                         <input id="numEntriesPerPage" type="number" min="0" max="20" value={numEmployeesPerPage}
@@ -53,7 +53,7 @@ function EmployeeList() {
                         }}
                         >&#9650;</button>
                     </div>
-                </div>
+                </div>}
                 <div id="employeeList">
                     {employees.slice(employeeStartIndex, employeeStartIndex + numEmployeesPerPage).map((employee, index, slicedArray) =>
                         <div className="employeeDiv" id={"employeeDiv" + (slicedArray.length - (index + 1))} key={employee.id}
